@@ -1,0 +1,25 @@
+@startuml
+
+[DataBase] as DB
+[Analyzer #1 Load Balancer] as A1LB
+[Analyzer #2 Load Balancer] as A2LB
+
+[Sensor #1.0] --> A1LB
+[Sensor #1.1] --> A1LB
+[Sensor #2.0] --> A2LB
+[Sensor #2.1] --> A2LB
+
+A1LB --> [Analyzer #1.0]
+A1LB --> [Analyzer #1.1]
+A2LB --> [Analyzer #2.0]
+A2LB --> [Analyzer #2.2]
+
+[Analyzer #1.0] --> [Batcher #1]
+[Analyzer #1.1] --> [Batcher #1]
+[Analyzer #2.0] --> [Batcher #2]
+[Analyzer #2.2] --> [Batcher #2]
+
+[Batcher #1] --> DB
+[Batcher #2] --> DB
+
+@enduml

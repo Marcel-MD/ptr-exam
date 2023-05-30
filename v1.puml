@@ -1,0 +1,18 @@
+@startuml
+
+[Gateway] as G
+[DataBase] as DB
+
+[Sensor #1] --> G
+[Sensor #2] --> G
+[Sensor #3] --> G
+
+G --> [Analyzer #1]
+G --> [Analyzer #2]
+G --> [Analyzer #3]
+
+[Analyzer #1] --> DB
+[Analyzer #2] --> DB
+[Analyzer #3] --> DB
+
+@enduml
