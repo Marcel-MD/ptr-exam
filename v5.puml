@@ -1,0 +1,31 @@
+@startuml
+
+[EU Server] as ES
+[US Server] as US
+[Other Server] as OS
+
+[EU DataBase] as ED
+[US DataBase] as UD
+[Other DataBase] as OD
+
+[Web Client] as C
+[Cache] as CH
+
+[Bank #1 API] as B1
+[Bank #2 API] as B2
+[Bank #3 API] as B3
+
+B1 --> C
+B2 --> C
+B3 --> C
+
+C <-> CH
+C --> ED
+C --> UD
+C --> OD
+
+ED --> ES
+UD --> US
+OD --> OS
+
+@enduml

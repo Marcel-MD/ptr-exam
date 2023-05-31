@@ -28,6 +28,10 @@ The system will be deployed across various locations within the national electri
 
 ## V5: A credit offerings search/aggregator service (insert your data, get a list of possible credit options from different banks).
 
+The tricky part in this system is gathering up to date information from all the banks. We'll need to have a separate service that will periodically fetch the data from all the banks and store it in a database (assuming the banks have an API). The search service will be a simple REST API that will query the database and return the results. Let's assume the biggest scale, for example we need data from all banks in the world, even in such a extreme case we could fetch the data from banks in different time zones at different times, so the load will be distributed. We also could have separate databases for each region, because the users will be interested only in the banks from their region.
+
+![Diagram](https://github.com/Marcel-MD/ptr-exam/blob/main/v5.png)
+
 ## V6: A machine learning prediction service (High-resolution images, streaming/real time data).
 
 Because the images will be high-resolution we shouldn't pass them as messages. Instead we'll store them in a blob storage and pass the link to the image as message. Because this prediction algorithms could take time, we need a queue to store the requests and process them one by one. Prediction results could be stored in a database.
