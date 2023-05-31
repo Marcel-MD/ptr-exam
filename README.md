@@ -8,8 +8,6 @@ We can assume that a sensor sends data every one second, which means we'll have 
 
 ![Diagram](https://github.com/Marcel-MD/ptr-exam/blob/main/v1.png)
 
-If we don't want to lose any messages we can add a message broker between the gateway and analyzers.
-
 ## V2: A system to collect sensor data for a car (engine, breaks, media, climate control, cameras).
 
 In case of a car the messages will be more frequent, let's assume each sensor will send one message every 10ms. This means we'll have 100 messages/second for each sensor and we'll also have a lot for redundant sensors, so it's gonna be a lot of messages to process. All communication will run in car's local network so we don't need to worry about security. We'll need a lot of redundancy and high availability. Also asynchronous communication like using a message broker or batching the messages is not an option because we need to know the state of the car in real time. Communication through a gateway could also add extra latency we can't afford. We'll have to eventually store these messages, because there are a lot of them we will batch them before saving to the database.

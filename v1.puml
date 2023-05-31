@@ -1,15 +1,15 @@
 @startuml
 
-[Gateway] as G
+[Message Queue] as MQ
 [DataBase] as DB
 
-[Sensor #1] --> G
-[Sensor #2] --> G
-[Sensor #3] --> G
+[Sensor #1] --> MQ
+[Sensor #2] --> MQ
+[Sensor #3] --> MQ
 
-G --> [Analyzer #1]
-G --> [Analyzer #2]
-G --> [Analyzer #3]
+MQ --> [Analyzer #1]
+MQ --> [Analyzer #2]
+MQ --> [Analyzer #3]
 
 [Analyzer #1] --> DB
 [Analyzer #2] --> DB
