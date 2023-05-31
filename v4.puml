@@ -1,0 +1,37 @@
+@startuml
+
+[Sensor #1] as S1
+[Sensor #2] as S2
+[Sensor #3] as S3
+
+[Load Balancer] as LB
+
+[Gateway #1] as G1
+[Gateway #2] as G2
+
+[Kafka Cluster] as K
+
+[Some Service #1] as SS1
+[Some Service #2] as SS2
+
+[Some Daily Job] as J
+
+[DataBase] as DB
+
+S1 --> LB
+S2 --> LB
+S3 --> LB
+
+LB --> G1
+LB --> G2
+
+G1 --> K
+G2 --> K
+
+K --> SS1
+K --> SS2
+K --> J
+
+J --> DB
+
+@enduml

@@ -24,6 +24,10 @@ In this case we'll have a lot of small messages. If 60 fps is a playable frame r
 
 ## V4: A system to collect sensor data for a national electric grid (cable health/status, voltage, current, temperature, consumption).
 
+The system will be deployed across various locations within the national electric grid. There will be a large number of sensors distributed throughout the grid, generating data continuously. If each sensor will generate a new data every 10 seconds, and we could have thousands of sensors, we'll have a lot of messages to process. We'll have to think about security because the system will be deployed across various locations, so we'll need to authenticate all requests before we process and store them. Let's use a Gateway to authenticate all requests. A perfect storage for this type of sensor data would be Kafka because it's optimized for high throughput and low latency, and will allow for real time processing of the data. To store the data long term we could have a daily job that will move the data from Kafka to a database.
+
+![Diagram](https://github.com/Marcel-MD/ptr-exam/blob/main/v4.png)
+
 ## V5: A credit offerings search/aggregator service (insert your data, get a list of possible credit options from different banks).
 
 ## V6: A machine learning prediction service (High-resolution images, streaming/real time data).
