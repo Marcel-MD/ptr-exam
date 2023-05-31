@@ -18,7 +18,9 @@ In case of a car the messages will be more frequent, let's assume each sensor wi
 
 ## V3: An online gaming backend (in-game chat, game state changes/multiplayer, leaderboard).
 
-In this case we'll have a lot of small messages. If 60 fps is a playable frame rate for a game, we could say that we'll need 60 messages/second for each player. If we have 1000 players online we'll have 60 000 messages/second. This is a lot of messages and we'll need to optimize our system. Games also require low latency, so we'll use UDP as transport protocol. To make the game look smother we'll have to make small batches of messages and send them at once. For each game we'll have a separate server where players can connect. For login, leaderboard, and other non-realtime features we'll have a separate server for all players.
+In this case we'll have a lot of small messages. If 60 fps is a playable frame rate for a game, we could say that we'll need 60 messages/second for each player. If we have 1000 players online we'll have 60 000 messages/second. This is a lot of messages and we'll need to optimize our system. Games also require low latency, so we'll use UDP as transport protocol. To make the game look smother we'll have to make small batches of messages and send them at once. For each game we'll have a separate server where players can connect. For login, leaderboard, and other non-realtime features we'll have a separate server for all players. We also might need to queue the players before they can join a game if there are too many of them.
+
+![Diagram](https://github.com/Marcel-MD/ptr-exam/blob/main/v3.png)
 
 ## V4: A system to collect sensor data for a national electric grid (cable health/status, voltage, current, temperature, consumption).
 

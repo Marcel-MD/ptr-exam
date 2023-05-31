@@ -1,0 +1,30 @@
+@startuml
+
+[Player #1] as P1
+[Player #2] as P2
+[Player #3] as P3
+
+[DataBase] as DB
+[Leaderboard Server] as LS
+
+[Player Queue] as PQ
+
+[Game Server #1] as GS1
+[Game Server #2] as GS2
+[Game Server #3] as GS3
+
+P1 --> PQ
+P2 --> PQ
+P3 --> PQ
+
+PQ --> GS1
+PQ --> GS2
+PQ --> GS3
+
+GS1 <--> DB
+GS2 <--> DB
+GS3 <--> DB
+
+LS <--> DB
+
+@enduml
