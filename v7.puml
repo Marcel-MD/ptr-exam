@@ -1,0 +1,31 @@
+@startuml
+
+[Data Source] as DS
+[Batcher] as B
+[Load Balancer] as LB
+
+[Worker Queue #1] as WQ1
+[Worker Queue #2] as WQ2
+[Worker #1] as W1
+[Worker #2] as W2
+
+[Intermediate Storage] as IS
+
+[Agregator] as A
+
+[Final Storage] as FS
+
+DS --> B
+B --> LB
+
+LB --> WQ1
+LB --> WQ2
+WQ1 --> W1
+WQ2 --> W2
+
+W1 --> IS
+W2 --> IS
+IS --> A
+A --> FS
+
+@enduml

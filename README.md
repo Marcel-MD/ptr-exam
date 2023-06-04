@@ -40,6 +40,10 @@ Because the images will be high-resolution we shouldn't pass them as messages. I
 
 ## V7: A batching data processing pipeline (extraction, transformations, loading, monitoring).
 
+Very little information in this scenario. Usually batching pipelines are used for handling large amounts of data. First of all will have a batcher that will collect the data and will distribute it among workers. Because we don't know what kind of processing is done inside workers we could add a message queue for each worker, first of all to make sure we don't lose any data, and second to make sure we don't overload the worker. After workers are done processing the data we need to aggregate and store the results. To not overload the aggregator we could store the results in some kind of storage and the aggregator will periodically fetch the data from the storage and aggregate it. Type of storage depends on the type of data we need to store, from the scenario we can't tell what kind of data we need to store.
+
+![Diagram](https://github.com/Marcel-MD/ptr-exam/blob/main/v7.png)
+
 ## V8: A CCTV (recognition) + video analysis (search+reports) system for city’s police department.
 
 ## V9: Elastic computing/data processing platform Hadoop/Spark-style.

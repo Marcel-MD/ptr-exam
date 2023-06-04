@@ -3,6 +3,10 @@
 [DataBase] as DB
 [Blob Storage] as BS
 
+[Load Balancer] as LB
+[Gateway #1] as G1
+[Gateway #2] as G2
+
 [Message Queue] as MQ
 
 [Client #1] as C1
@@ -12,13 +16,17 @@
 [Prediction Service #1] as PS1
 [Prediction Service #2] as PS2
 
-C1 --> MQ
-C2 --> MQ
-C3 --> MQ
+C1 --> LB
+C2 --> LB
+C3 --> LB
 
-C1 --> BS
-C2 --> BS
-C3 --> BS
+LB --> G1
+LB --> G2
+
+G1 --> BS
+G2 --> BS
+G1 --> MQ
+G2 --> MQ
 
 MQ --> PS1
 MQ --> PS2
