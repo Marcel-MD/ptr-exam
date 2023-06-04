@@ -1,0 +1,38 @@
+@startuml
+
+[Video Camera #1] as VC1
+[Video Camera #2] as VC2
+[Video Camera #2] as VC3
+
+[Load Balancer] as LB
+[Upload Service #1] as US1
+[Upload Service #2] as US2
+
+[Temporary File Storage] as TFS
+[Message Queue] as MQ
+[Video Processing Pipeline #1] as P1
+[Video Processing Pipeline #2] as P2
+
+[Long Term Storage] as LTS
+
+VC1 --> LB
+VC2 --> LB
+VC3 --> LB
+
+LB --> US1
+LB --> US2
+
+US1 --> TFS
+US1 --> MQ
+US2 --> TFS
+US2 --> MQ
+
+TFS --> P1
+MQ --> P1
+TFS --> P2
+MQ --> P2
+
+P1 --> LTS
+P2 --> LTS
+
+@enduml

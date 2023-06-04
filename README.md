@@ -46,4 +46,8 @@ Very little information in this scenario. Usually batching pipelines are used fo
 
 ## V8: A CCTV (recognition) + video analysis (search+reports) system for city’s police department.
 
+We'll have live stream of video from multiple cameras. This video will be split and saved in temporary storage. The video processing pipelines will listen to a message queue and will read the videos from the temporary storage. After the video is processed it will be saved in a long term storage. The video pipeline can have a lot of different workers, like face recognition, plate recognition, report generation, notifications, etc.
+
+![Diagram](https://github.com/Marcel-MD/ptr-exam/blob/main/v8.png)
+
 ## V9: Elastic computing/data processing platform Hadoop/Spark-style.
