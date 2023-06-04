@@ -51,3 +51,22 @@ We'll have live stream of video from multiple cameras. This video will be split 
 ![Diagram](https://github.com/Marcel-MD/ptr-exam/blob/main/v8.png)
 
 ## V9: Elastic computing/data processing platform Hadoop/Spark-style.
+
+Spark applications run as independent sets of processes on a cluster, coordinated by the SparkContext object in your main program (called the driver program).
+
+Specifically, to run on a cluster, the SparkContext can connect to several types of cluster managers (either Spark’s own standalone cluster manager, Mesos, YARN or Kubernetes), which allocate resources across applications. Once connected, Spark acquires executors on nodes in the cluster, which are processes that run computations and store data for your application. Next, it sends your application code (defined by JAR or Python files passed to SparkContext) to the executors. Finally, SparkContext sends tasks to the executors to run.
+
+![Diagram](https://github.com/Marcel-MD/ptr-exam/blob/main/v9.png)
+
+| Term | Meaning |
+|---|---|
+| Application       | User program built on Spark. Consists of a driver program and executors on the cluster.                                                                                           |
+| Application jar   | A jar containing the user's Spark application. In some cases users will want to create an "uber jar" containing their application along with its dependencies. The user's jar should never include Hadoop or Spark libraries, however, these will be added at runtime.   |
+| Driver program    | The process running the main() function of the application and creating the SparkContext                                                                                        |
+| Cluster manager   | An external service for acquiring resources on the cluster (e.g. standalone manager, Mesos, YARN, Kubernetes)                                                                     |
+| Deploy mode       | Distinguishes where the driver process runs. In "cluster" mode, the framework launches the driver inside of the cluster. In "client" mode, the submitter launches the driver outside of the cluster.                                            |
+| Worker node       | Any node that can run application code in the cluster                                                                                                                               |
+| Executor          | A process launched for an application on a worker node, that runs tasks and keeps data in memory or disk storage across them. Each application has its own executors.                                                                         |
+| Task              | A unit of work that will be sent to one executor                                                                                                                                    |
+| Job               | A parallel computation consisting of multiple tasks that gets spawned in response to a Spark action (e.g. save, collect); you'll see this term used in the driver's logs.                                                                   |
+| Stage             | Each job gets divided into smaller sets of tasks called stages that depend on each other (similar to the map and reduce stages in MapReduce); you'll see this term used in the driver's logs.                                               |
